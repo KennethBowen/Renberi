@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
-  root 'posts#index'
   resources :posts
+  root 'posts#index'
+  get '/posts/hashtag/:name', to:'posts#hashtags'
 end

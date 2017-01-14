@@ -1,5 +1,5 @@
 class PostsController < ApplicationController
-  before_action :set_pot, only: [:show, :edit, :update, :destroy]
+  before_action :set_post, only: [:show, :edit, :update, :destroy]
 
   def index
     @posts = Post.all
@@ -21,6 +21,11 @@ class PostsController < ApplicationController
 
   def show
     @post = Post.find(params[:id])
+  end
+
+  def hashtags
+    tag = Tag.find_by(name: params[:name])
+    @posts = tag.posts
   end
 
   def edit
